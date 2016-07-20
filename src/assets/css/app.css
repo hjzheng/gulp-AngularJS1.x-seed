@@ -1,0 +1,69 @@
+body,div,dl,dt,dd,ul,ol,li,
+h1,h2,h3,h4,h5,h6,
+pre,form,fieldset,legend,input,textarea,p,
+th,td,hr,button,figure,footer,header,menu,nav,section {
+    margin:0;
+    padding:0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    outline: none;
+}
+html, body{
+    height: 100%;
+}
+body {
+    font: 12px/1 MicrosoftYaHei, "sans serif", tahoma, verdana, helvetica;
+    color: #3d3d3d;
+}
+aside,footer,header,menu,nav,section {
+    display:block;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+th {
+    text-align:inherit;
+}
+fieldset,img {
+    border:0;
+}
+address,caption,cite,code,dfn,em,th,var {
+    font-style:normal;
+    font-weight:500;
+}
+ol,ul {
+    list-style:none;
+}
+i {
+    font-style: normal;
+}
+caption,th {
+    text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:500;
+}
+a {
+    text-decoration:none;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.clearfix:after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+.clear-both {
+    clear: both;
+}
+.text-overflow {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}

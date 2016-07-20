@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head lang="zh-cn">
+  <meta charset="UTF-8">
+  <title>gulp-AngularJS1.x-seed</title>
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <!-- build:css css/lib.css -->
+  <!-- endbuild -->
+  <!-- build:css css/app.css -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../src/assets/css/app.css">
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+
+<body ng-controller="AppController as vm">
+  <h2>{{vm.title}}</h2>
+  <div ui-view></div>
+</body>
+
+
+<!-- build:js js/lib.js -->
+<script src="../node_modules/angular/angular.min.js"></script>
+<script src="../node_modules/angular-resource/angular-resource.min.js"></script>
+<script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../node_modules/lodash/lodash.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js js/app.js -->
+<!-- inject:js -->
+<script src="../src/app/app.js"></script>
+<script src="../src/app/example/example.module.js"></script>
+<script src="../src/app/app.controller.js"></script>
+<script src="../src/app/app.router.js"></script>
+<script src="../src/app/example/example.controller.js"></script>
+<script src="../src/app/example/example.resource.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+
+<!--template.js-->
+
+</html>
