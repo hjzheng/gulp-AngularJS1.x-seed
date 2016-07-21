@@ -1,7 +1,7 @@
 (function() {
 	angular
 		.module('exampleModule')
-		.factory('exampleResource', exampleResource)
+		.factory('exampleResource', exampleResource);
 
 	exampleResource.$inject = ['$resource'];
 

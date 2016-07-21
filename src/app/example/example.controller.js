@@ -9,6 +9,6 @@
 
 		exampleResource.get({id: 2}, function(data) {
 			vm.user = data;
-		})
+		});
 	}
 })();
