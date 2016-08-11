@@ -11,12 +11,15 @@ var proxyMiddleware = require('http-proxy-middleware');
 var watch = require('gulp-watch');
 var templateCache = require('gulp-angular-templatecache');
 var replace = require('gulp-replace');
+var rev = require('gulp-rev');
+var revReplace = require('gulp-rev-replace');
+var filter = require('gulp-filter');
 var config = require('./gulp.conf.js');
 
 var target = 'http://localhost:8989';
 
 gulp.task('clean', function() {
-	del.sync(['build']);
+	return del.sync(['build']);
 });
 
 gulp.task('inject', function() {
@@ -57,13 +60,19 @@ gulp.task('watch', function() {
 
 gulp.task('dev', ['inject', 'browserSync', 'watch']);
 
-gulp.task('build', ['inject', 'template'], function() {
+gulp.task('build', ['clean', 'inject', 'template'], function() {
+
+	var indexHtmlFilter = filter(['**/*', '!**/index.html'], { restore: true });
 
 	return gulp.src(config.index)
+		.pipe(replace('<!--template.js-->', '<script src="js/templates.js"></script>'))
 		.pipe(useref())
 		.pipe(gulpIf('*.js', uglify()))
 		.pipe(gulpIf('*.css', minifyCss()))
-		.pipe(replace('<!--template.js-->', '<script src="js/templates.js"></script>'))
+		.pipe(indexHtmlFilter)
+		.pipe(rev())
+		.pipe(indexHtmlFilter.restore)
+		.pipe(revReplace())
 		.pipe(gulp.dest(config.build));
 });
 
