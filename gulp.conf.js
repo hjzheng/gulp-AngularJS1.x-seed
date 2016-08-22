@@ -6,6 +6,7 @@ module.exports = function() {
 	var config = {
 		src: src,
 		build: build,
+		tmp: './tmp/',
 		index: src + 'index.html',
 		template: src + 'app/**/*.html',
 		js: src + '**/*.js',

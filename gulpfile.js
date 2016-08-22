@@ -19,16 +19,17 @@ var config = require('./gulp.conf.js');
 var target = 'http://localhost:8989';
 
 gulp.task('clean', function() {
-	return del.sync(['build']);
+	return del.sync(['build', 'tmp']);
 });
 
-gulp.task('inject', function() {
+gulp.task('inject', ['template'], function() {
 
 	var js = gulp.src(config.js, {read: false}).pipe(order(config.jsOrder));
 	var css = gulp.src(config.css, {read: false}).pipe(order(config.cssOrder));
 
 	return gulp
 		.src(config.index)
+		.pipe(inject(gulp.src(config.tmp + 'template.js', {read: false}), {addPrefix: '../', starttag: '<!--template.js-->', endtag: '<!--endTemplate.js-->'}))
 		.pipe(inject(js, {addPrefix: '../src', relative: true}))
 		.pipe(inject(css, {addPrefix: '../src', relative: true}))
 		.pipe(gulp.dest(config.src))
@@ -60,12 +61,11 @@ gulp.task('watch', function() {
 
 gulp.task('dev', ['inject', 'browserSync', 'watch']);
 
-gulp.task('build', ['clean', 'inject', 'template'], function() {
+gulp.task('build', ['clean', 'inject'], function() {
 
 	var indexHtmlFilter = filter(['**/*', '!**/index.html'], { restore: true });
 
 	return gulp.src(config.index)
-		.pipe(replace('<!--template.js-->', '<script src="js/templates.js"></script>'))
 		.pipe(useref())
 		.pipe(gulpIf('*.js', uglify()))
 		.pipe(gulpIf('*.css', minifyCss()))
@@ -78,6 +78,6 @@ gulp.task('build', ['clean', 'inject', 'template'], function() {
 
 gulp.task('template', function() {
 	return gulp.src(config.template)
-		.pipe(templateCache('templates.js', {'root': './src/app', 'module': 'app'}))
-		.pipe(gulp.dest(config.build + 'js'));
+		.pipe(templateCache('template.js', {'root': './src/app', 'module': 'app'}))
+		.pipe(gulp.dest(config.tmp));
 });

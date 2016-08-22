@@ -1,0 +1,1 @@
+angular.module('app').run(['$templateCache', function($templateCache) {$templateCache.put('./src/app/example/example.html','<h2>{{vm.title}}</h2>\n<div>{{vm.user}}</div>\n');}]);
