@@ -8,6 +8,7 @@
     "lodash": "^4.13.1"
   },
   "devDependencies": {
+    "anyproxy": "^3.10.2",
     "body-parser": "^1.15.2",
     "browser-sync": "^2.13.0",
     "concurrently": "^2.1.0",
@@ -45,6 +46,7 @@
     "dev-product": "gulp dev --proxy-target product",
     "build": "gulp build",
     "precommit": "npm test",
-    "prepush": "npm test"
+    "prepush": "npm test",
+    "anyProxy-server": "nodemon anyProxy-server.js"
   }
 }
