@@ -3,9 +3,11 @@ var del = require('del');
 var plugins = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var proxyMiddleware = require('http-proxy-middleware');
+var argv = require('yargs').argv;
+
 var config = require('./gulp.conf.js');
 
-var target = 'http://localhost:8989';
+var target = config.proxyTarget[argv['proxyTarget']];
 
 gulp.task('clean', function() {
 	return del.sync(['build', 'tmp']);

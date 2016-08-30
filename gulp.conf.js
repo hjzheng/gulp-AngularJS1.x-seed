@@ -20,7 +20,12 @@ module.exports = function() {
 			'**/app.css',
 			'**/*.module.css',
 			'**/*.css'
-		]
+		],
+		proxyTarget: {
+			local: 'http://localhost:8989',
+			test: 'http://test-server:8989',
+			product: 'http://product-server:8989'
+		}
 	};
 
 	return config;
