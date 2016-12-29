@@ -1,6 +1,6 @@
 module.exports = {
 	summary:function(){
-		return "just a test";
+		return "just a test, ^_^";
 	},
 	replaceServerResDataAsync: function(req, res, serverResData, callback){
 		if (req.url.indexOf('/users/2') !== -1) {

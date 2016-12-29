@@ -13,3 +13,7 @@ gulp + AngularJS1.x 简易开发环境搭建
 - npm install
 - npm run dev // 开发
 - npm run build // build
+
+### 编码规范
+
+[johnpapa/angular-styleguide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/i18n/zh-CN.md)
